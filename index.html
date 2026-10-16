@@ -138,7 +138,7 @@ details.bloc[open]>summary::after{content:"−"}
   <ol>
     <li><a href="https://aistudio.google.com/apikey" target="_blank" rel="noopener">Google AI Studio</a> : connexion avec ton compte Google, « Create API key », copie.</li>
     <li><a href="https://console.groq.com/keys" target="_blank" rel="noopener">Groq</a> : connexion Google, « Create API Key », copie.</li>
-    <li>Colle les deux dans Réglages en bas, puis « Enregistrer et tester ». Mistral, OpenRouter et Cerebras sont des bonus facultatifs.</li>
+    <li>Colle les deux dans Réglages en bas, puis « Enregistrer et tester ». Mistral et OpenRouter sont des bonus facultatifs.</li>
   </ol>
 </section>
 
@@ -201,8 +201,7 @@ var FOURN={
   gemini:{nom:'Google AI Studio',base:'https://generativelanguage.googleapis.com/v1beta/openai',cle:'https://aistudio.google.com/apikey',essentiel:true},
   groq:{nom:'Groq',base:'https://api.groq.com/openai/v1',cle:'https://console.groq.com/keys',essentiel:true},
   mistral:{nom:'Mistral',base:'https://api.mistral.ai/v1',cle:'https://console.mistral.ai/api-keys'},
-  openrouter:{nom:'OpenRouter (modèles gratuits)',base:'https://openrouter.ai/api/v1',cle:'https://openrouter.ai/settings/keys'},
-  cerebras:{nom:'Cerebras',base:'https://api.cerebras.ai/v1',cle:'https://cloud.cerebras.ai'}
+  openrouter:{nom:'OpenRouter (modèles gratuits)',base:'https://openrouter.ai/api/v1',cle:'https://openrouter.ai/settings/keys'}
 };
 var SIEGES=[
  {id:'gemini-pro',nom:'Gemini Pro',l:'M',c:'--c1',f:'gemini',force:3,talent:'raisonnement, analyse, longs documents, synthèse',pick:[/^gemini-[\d.]+-pro$/],def:'gemini-2.5-pro',grandContexte:true},
@@ -213,11 +212,10 @@ var SIEGES=[
  {id:'qwen',nom:'Qwen',l:'Q',c:'--c5',f:'groq',force:2,talent:'chinois, logique',pick:[/^qwen\/qwen3/,/qwen/],def:'qwen/qwen3-32b'},
  {id:'web',nom:'Recherche web',l:'W',c:'--c10',f:'groq',force:2,talent:'informations récentes avec recherche web',pick:[/^groq\/compound$/,/^groq\/compound/],def:'groq/compound',web:true},
  {id:'mistral',nom:'Mistral',l:'T',c:'--c7',f:'mistral',force:3,talent:'français, rédaction professionnelle',pick:[/^mistral-large-latest$/,/^mistral-medium-latest$/,/^mistral-large/],def:'mistral-large-latest'},
- {id:'deepseek',nom:'DeepSeek',l:'D',c:'--c8',f:'openrouter',force:3,talent:'raisonnement, contre-vérification',pick:[/^deepseek\/deepseek-chat.*:free$/,/^deepseek\/.*:free$/],def:'deepseek/deepseek-chat-v3-0324:free'},
- {id:'cerebras',nom:'Cerebras',l:'C',c:'--c9',f:'cerebras',force:2,talent:'réponses très rapides',pick:[/gpt-oss-120b/,/qwen-3/,/llama/],def:'gpt-oss-120b',rapide:true}
+ {id:'deepseek',nom:'DeepSeek',l:'D',c:'--c8',f:'openrouter',force:3,talent:'raisonnement, contre-vérification',pick:[/^deepseek\/deepseek-chat.*:free$/,/^deepseek\/.*:free$/],def:'deepseek/deepseek-chat-v3-0324:free'}
 ];
 var S={};SIEGES.forEach(function(s){S[s.id]=s;});
-var SYNTHESE_ORDRE=['gemini-pro','mistral','kimi','gpt-oss','deepseek','gemini-flash','llama','cerebras','qwen'];
+var SYNTHESE_ORDRE=['gemini-pro','mistral','kimi','gpt-oss','deepseek','gemini-flash','llama','qwen'];
 
 var cfg={cles:store.get('cles',{}),plafond:store.get('plafond',200),maxTok:store.get('maxTok',3000),mots:store.get('mots','')};
 var modeles=store.get('modeles',{});var hs=store.get('hs',{});
